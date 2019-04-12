@@ -20,21 +20,41 @@
 
 #include "calibration.h"
 #include "positioning.h"
-//#include "compute.h"
+#include "aStarSearch.h"
 
 using namespace std;
 using namespace cv;
 
 int main()
 {
+//    Initialize RnT matrices to store 'point ot camera', 'camera to world' and 'point to world' coordinates
     float CtoW[4][4], PtoC[4][4];
     float PtoW[4][4] = { 1,  0,  0,     0,
                          0,  1,  0,     0,
                          0,  0,  1,      0,
                          0,  0,  0,      1};
+
+    /* Initialize a grid to represent map of the envirenment
+    Description of the Grid-
+    1--> The cell is not blocked
+    0--> The cell is blocked */
+    int grid[ROW][COL] =
+            {
+                    { 1, 0, 1, 1, 1},
+                    { 1, 1, 1, 0, 1},
+                    { 1, 1, 1, 1, 1},
+                    { 0, 0, 1, 0, 1},
+                    { 1, 1, 1, 0, 1},
+                    { 1, 0, 1, 1, 1},
+                    { 1, 1, 0, 1, 0},
+                    { 1, 0, 1, 1, 1},
+                    { 1, 1, 1, 0, 1},
+                    { 1, 0, 0, 1, 0}
+            };
+
     calibration(CtoW, PtoC, PtoW);
 
-    positioning(PtoW, CtoW, PtoC);
+    positioning(PtoW, CtoW, PtoC, grid);
 
     return 0;
 }

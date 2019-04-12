@@ -13,11 +13,12 @@
 
 #include "positioning.h"
 #include "compute.h"
+#include "aStarSearch.h"
 
 using namespace std;
 using namespace cv;
 
-positioning::positioning(float PtoW[4][4], float CtoW[4][4], float PtoC [4][4])
+positioning::positioning(float PtoW[4][4], float CtoW[4][4], float PtoC [4][4], int grid[][COL])
 {
     // Define the 'capture' object for camera
     // start camera using the link specified
@@ -47,6 +48,11 @@ positioning::positioning(float PtoW[4][4], float CtoW[4][4], float PtoC [4][4])
 
     bool tagFound;
 
+//    variable to store frame count to enter path planning mode only once in a while
+    int frame=0;
+//    Mat object for representing map as an image
+    cv::Mat map(9,10,CV_8UC1, cv::Scalar(100));
+
     clock_t time;
 
     while (capture.grab())
@@ -73,10 +79,31 @@ positioning::positioning(float PtoW[4][4], float CtoW[4][4], float PtoC [4][4])
          namedWindow("3D Pose Estimation Window", WINDOW_FREERATIO);
          imshow("3D Pose Estimation Window", imageCopy);
 
+         if(frame == 4)
+             map=(9,10,CV_8UC1, cv::Scalar(100));
+         if(frame == 5)
+         {
+//             Initialize coordinate values for source
+             int x = (PtoW[0][3])/0.6, y = (PtoW[1][3])/0.6;
+//             Source
+             aStarSearch::Pair src = make_pair(x, y);
+//             Destination
+             aStarSearch::Pair dest = make_pair(0,0);
+//             A* search algorithm to find the shortest path from source 'src' to destination 'dest'
+             aStarSearch(grid, src, dest, map);
+             cv::namedWindow("Map", cv::WINDOW_FREERATIO);
+             cv::imshow("Map",map);
+//             cv::waitKey(0);
+//             cv::destroyAllWindows();
+             frame = 0;
+         }
+
          // Store Video Stream
 //         video.write(imageCopy);
 
         compute::initializeToZero(PtoW);
+
+         frame++;
 
         time = clock() - time;
         double functionTime = ((double)time)/CLOCKS_PER_SEC;

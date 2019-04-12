@@ -14,12 +14,14 @@
 #include <iostream>
 #include <vector>
 
+#include "aStarSearch.h"
+
 using namespace std;
 using namespace cv;
 
 class positioning {
 public:
-    positioning(float PtoW[4][4], float CtoW[4][4], float PtoC [4][4]);
+    positioning(float PtoW[4][4], float CtoW[4][4], float PtoC [4][4], int grid[][COL]);
 };
 
 
