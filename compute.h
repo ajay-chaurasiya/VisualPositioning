@@ -38,6 +38,8 @@ public:
 
     static void compute3dPose(float PtoW[4][4], float CtoW[4][4], float PtoC [4][4]);
 
+    static void printWorldRotationVector(Mat &R, float PtoW[4][4]);
+
     static void printWorldCoordinates(float PtoW[4][4], Mat &imageCopy);
 
     static void printCameraCoordinates(float PtoC[4][4], Mat &imageCopy);
