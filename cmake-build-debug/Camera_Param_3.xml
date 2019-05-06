@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<opencv_storage>
+<Intrinsic_Parameters type_id="opencv-matrix">
+  <rows>3</rows>
+  <cols>3</cols>
+  <dt>d</dt>
+  <data>
+    5.8463333891547290e+02 0. 3.5914861514171361e+02 0.
+    8.4712587882366279e+02 3.3376454825249863e+02 0. 0. 1.</data></Intrinsic_Parameters>
+<Distorion_Coeffecients type_id="opencv-matrix">
+  <rows>1</rows>
+  <cols>5</cols>
+  <dt>d</dt>
+  <data>
+    -3.4840305219021345e-01 -2.3622073595921056e-01
+    1.5321559061056778e-05 -8.5472390927414082e-03
+    6.3451787816890792e-01</data></Distorion_Coeffecients>
+</opencv_storage>
