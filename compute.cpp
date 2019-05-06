@@ -170,6 +170,34 @@ void compute::compute3dPose(float PtoW[4][4], float CtoW[4][4], float PtoC [4][4
     }
  }
 
+void compute::printWorldRotationVector(Mat &R, float PtoW[4][4]) {
+     Mat G = R.clone();
+     for (int i = 0; i < 3; i++){
+         for (int j = 0; j < 3; j++){
+             G.at<double>(i,j) = PtoW[i][j];
+         }
+     }
+    float sy = sqrt(G.at<double>(0,0) * G.at<double>(0,0) +  G.at<double>(1,0) * G.at<double>(1,0) );
+
+    bool singular = sy < 1e-6; // If
+
+    float x, y, z;
+    if (!singular)
+    {
+        x = atan2(G.at<double>(2,1) , G.at<double>(2,2));
+        y = atan2(-G.at<double>(2,0), sy);
+        z = atan2(G.at<double>(1,0), G.at<double>(0,0));
+    }
+    else
+    {
+        x = atan2(-G.at<double>(1,2), G.at<double>(1,1));
+        y = atan2(-G.at<double>(2,0), sy);
+        z = 0;
+    }
+
+    cout << "World Rotation Vector: \t" << (x*180/CV_PI) << "\t"  << (y*180/CV_PI) << "\t" << (z*180/CV_PI) << endl;
+ }
+
  void compute::printWorldCoordinates(float PtoW[4][4], Mat &imageCopy) {
      // Store the coordinates of Pw in string form to print on the image
      char xw[10], yw[10], zw[10];
@@ -180,9 +208,9 @@ void compute::compute3dPose(float PtoW[4][4], float CtoW[4][4], float PtoC [4][4
 
      // Print the Pw coordinates on the image
      putText(imageCopy, "World Coordinates of Robot", Point(7,20), FONT_HERSHEY_COMPLEX_SMALL, 1, Scalar(255,255,0));
-     putText(imageCopy, xw, Point(7,40), FONT_HERSHEY_COMPLEX_SMALL, 1, Scalar(255,255,255));
-     putText(imageCopy, yw, Point(7,60), FONT_HERSHEY_COMPLEX_SMALL, 1, Scalar(255,255,255));
-     putText(imageCopy, zw, Point(7,80), FONT_HERSHEY_COMPLEX_SMALL, 1, Scalar(255,255,255));
+     putText(imageCopy, xw, Point(7,40), FONT_HERSHEY_COMPLEX_SMALL, 1, Scalar(0,0,0));
+     putText(imageCopy, yw, Point(7,60), FONT_HERSHEY_COMPLEX_SMALL, 1, Scalar(0,0,0));
+     putText(imageCopy, zw, Point(7,80), FONT_HERSHEY_COMPLEX_SMALL, 1, Scalar(0,0,0));
  }
 
  void compute::printCameraCoordinates(float PtoC[4][4], Mat &imageCopy) {

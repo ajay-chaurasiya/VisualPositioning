@@ -150,33 +150,6 @@ VisualPositioning/fast:
 	$(MAKE) -f CMakeFiles/VisualPositioning.dir/build.make CMakeFiles/VisualPositioning.dir/3dPosition.cpp.s
 .PHONY : 3dPosition.cpp.s
 
-aStarSearch.o: aStarSearch.cpp.o
-
-.PHONY : aStarSearch.o
-
-# target to build an object file
-aStarSearch.cpp.o:
-	$(MAKE) -f CMakeFiles/VisualPositioning.dir/build.make CMakeFiles/VisualPositioning.dir/aStarSearch.cpp.o
-.PHONY : aStarSearch.cpp.o
-
-aStarSearch.i: aStarSearch.cpp.i
-
-.PHONY : aStarSearch.i
-
-# target to preprocess a source file
-aStarSearch.cpp.i:
-	$(MAKE) -f CMakeFiles/VisualPositioning.dir/build.make CMakeFiles/VisualPositioning.dir/aStarSearch.cpp.i
-.PHONY : aStarSearch.cpp.i
-
-aStarSearch.s: aStarSearch.cpp.s
-
-.PHONY : aStarSearch.s
-
-# target to generate assembly for a file
-aStarSearch.cpp.s:
-	$(MAKE) -f CMakeFiles/VisualPositioning.dir/build.make CMakeFiles/VisualPositioning.dir/aStarSearch.cpp.s
-.PHONY : aStarSearch.cpp.s
-
 calibration.o: calibration.cpp.o
 
 .PHONY : calibration.o
@@ -270,9 +243,6 @@ help:
 	@echo "... 3dPosition.o"
 	@echo "... 3dPosition.i"
 	@echo "... 3dPosition.s"
-	@echo "... aStarSearch.o"
-	@echo "... aStarSearch.i"
-	@echo "... aStarSearch.s"
 	@echo "... calibration.o"
 	@echo "... calibration.i"
 	@echo "... calibration.s"

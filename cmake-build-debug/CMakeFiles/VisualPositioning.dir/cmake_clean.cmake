@@ -3,7 +3,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/VisualPositioning.dir/positioning.cpp.o"
   "CMakeFiles/VisualPositioning.dir/calibration.cpp.o"
   "CMakeFiles/VisualPositioning.dir/compute.cpp.o"
-  "CMakeFiles/VisualPositioning.dir/aStarSearch.cpp.o"
   "VisualPositioning.pdb"
   "VisualPositioning"
 )

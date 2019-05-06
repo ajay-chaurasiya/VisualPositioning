@@ -62,6 +62,8 @@ positioning::positioning(float PtoW[4][4], float CtoW[4][4], float PtoC [4][4])
 
             compute::compute3dPose(PtoW, CtoW, PtoC);
 
+            compute::printWorldRotationVector(R, PtoW);
+
 //            compute::initializeToZero(PtoC);
         }
 

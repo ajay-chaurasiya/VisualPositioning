@@ -89,12 +89,6 @@
 		<Unit filename="/home/ajay/CLionProjects/VisualPositioning/3dPosition.cpp">
 			<Option target="VisualPositioning"/>
 		</Unit>
-		<Unit filename="/home/ajay/CLionProjects/VisualPositioning/aStarSearch.cpp">
-			<Option target="VisualPositioning"/>
-		</Unit>
-		<Unit filename="/home/ajay/CLionProjects/VisualPositioning/aStarSearch.h">
-			<Option target="VisualPositioning"/>
-		</Unit>
 		<Unit filename="/home/ajay/CLionProjects/VisualPositioning/calibration.cpp">
 			<Option target="VisualPositioning"/>
 		</Unit>
