@@ -40,8 +40,8 @@ Mat R = Mat::zeros(3,3,CV_64F);
 
 vector<Vec3d> rvecs, tvecs;
 
-vector<Vec3f> rotationAngles;
-vector<Vec3f> translationMatrix;
+//vector<Vec3f> rotationAngles;
+//vector<Vec3f> translationMatrix;
 
 // Initialize Mat objects for camera matrix and distortion coffecients
     Mat cameraMatrix, distCoeffs;
@@ -91,6 +91,9 @@ while (capture.grab())
             compute::computeCtoW(CtoW, PtoW, inv);
 
             compute::printCtoW(CtoW);
+
+            rvecs.empty();
+            tvecs.empty();
         }
 
         // Display the image
